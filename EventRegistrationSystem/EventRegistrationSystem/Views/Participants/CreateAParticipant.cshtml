@@ -1,0 +1,25 @@
+﻿@model ParticipantModel
+
+<div class="card-body">
+    <form asp-action="CreateAParticipant" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Enter a name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" type="email" placeholder="Enter a email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="EventID" class="form-label">EventID</label>
+            <input asp-for="EventID" class="form-control" placeholder="Enter a EventID" />
+            <span asp-validation-for="EventID" class="text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-controller="Participants" asp-action="Create" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+</div>
