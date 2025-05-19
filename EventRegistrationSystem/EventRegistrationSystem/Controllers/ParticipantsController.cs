@@ -33,10 +33,14 @@ namespace EventRegistrationSystem.Controllers
         {
             return View();
         }
-
-        public IActionResult ListByEvent()
+        public IActionResult ListByEvent(int eventId)
         {
-            return View();
+            var filtered = InMemoryDatabase.Participants
+                .Where(p => p.EventID == eventId)
+                .ToList();
+
+            return View("Create", filtered); // lub inny widok obsługujący List<ParticipantModel>
         }
+
     }
 }
