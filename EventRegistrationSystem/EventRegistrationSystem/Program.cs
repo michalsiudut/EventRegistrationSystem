@@ -1,3 +1,5 @@
+using EventRegistrationSystem.Models;
+
 namespace EventRegistrationSystem
 {
     public class Program
@@ -29,6 +31,12 @@ namespace EventRegistrationSystem
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
+
+            InMemoryDatabase.Participants.AddRange(new List<ParticipantModel>
+            {
+                new ParticipantModel { Id = 1, Name = "Micha³", Email = "michal@gmail.com", EventID = 1 },
+                new ParticipantModel { Id = 2, Name = "Piotr", Email = "C#developer@gmail.com", EventID = 2 },
+            });
 
             app.Run();
         }
