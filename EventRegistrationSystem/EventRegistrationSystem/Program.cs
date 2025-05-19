@@ -38,6 +38,11 @@ namespace EventRegistrationSystem
                 new ParticipantModel { Id = 2, Name = "Piotr", Email = "C#developer@gmail.com", EventID = 2 },
             });
 
+            InMemoryDatabase.Events.AddRange(new List<EventModel>
+            {
+                new EventModel { Id = 1, Title = "C# meeting", Date = DateTime.MinValue, Description = "C# meeting when we are discussing everyhing" },
+                new EventModel { Id = 2, Title = "cryptocurrencies meeting", Date = DateTime.MaxValue, Description = "free to join meeting" },
+            });
             app.Run();
         }
     }

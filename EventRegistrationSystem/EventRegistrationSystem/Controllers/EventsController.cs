@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EventRegistrationSystem.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EventRegistrationSystem.Controllers
 {
@@ -10,11 +11,29 @@ namespace EventRegistrationSystem.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            return View(InMemoryDatabase.Events);
         }
         public IActionResult Details()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult CreateNewEvent()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateNewEvent(EventModel model) {
+
+            if (!ModelState.IsValid)
+            {
+                return View("CreateNewEvent", model); 
+            }
+
+            model.Id = InMemoryDatabase.Events.Count + 1;
+            InMemoryDatabase.Events.Add(model);
+
+            return RedirectToAction("Create");
         }
     }
 
